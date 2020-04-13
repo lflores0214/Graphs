@@ -198,9 +198,9 @@ class Graph:
             neighbors = self.get_neighbors(starting_vertex)
             for neighbor in neighbors:
                 if neighbor not in visited:
-                    var = self.dfs_recursive(neighbor, destination_vertex, visited, new_path)
-                    if var is not None:
-                        return var
+                    route = self.dfs_recursive(neighbor, destination_vertex, visited, new_path)
+                    if route is not None:
+                        return route
 
 
 if __name__ == '__main__':
