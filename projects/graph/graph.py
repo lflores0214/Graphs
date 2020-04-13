@@ -40,20 +40,60 @@ class Graph:
         else:
             return None
             # might want to raise an exception here instead
-            
+
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create a queue and enqueue starting vertex
+        que = Queue()
+        que.enqueue([starting_vertex])
+        # create a set of traversed vertices
+        visited = set()
+        # while queue is not empty
+        while que.size() > 0:
+            # dequeue/pop the first vertex
+            path = que.dequeue()
+
+            # if not visited
+            if path[-1] not in visited:
+                # DO THE THING!
+                print(path[-1])
+                # mark as visited
+                visited.add(path[-1])
+                # enqueue all neighbors
+                for next_vert in self.get_neighbors(path[-1]):
+                    new_path = list(path)
+                    new_path.append(next_vert)
+                    que.enqueue(new_path)
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create a stack
+        # Push the starting vertex
+        stack = Stack()
+        stack.push(starting_vertex)
+        # create a set of traversed vertices
+        visited = set()
+        # while stack is not empty
+        while stack.size() > 0:
+            # pop the first vertex
+            path = stack.pop()
+            # if not visited
+            if path not in visited:
+                # DO THE THING!
+                print(path)
+                # mark as visited
+                visited.add(path)
+                # push all neighbors
+                for next_vert in self.get_neighbors(path):
+                    # new_path = list(path)
+                    # new_path.append(next_vert)
+                    stack.push(next_vert)
 
     def dft_recursive(self, starting_vertex):
         """
