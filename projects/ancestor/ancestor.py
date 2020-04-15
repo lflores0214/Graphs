@@ -208,4 +208,4 @@ def earliest_ancestor(ancestors, starting_node):
         graph.add_edge(child, parent)
 
     return graph.bft(starting_node)
-    
+
